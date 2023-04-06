@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --fix src/*.js",
     "format": "prettier --ignore-path .gitignore --write src/*.js",
-    "test": "jest",
+    "test:arpita": "jest ./src/arpita.test.js",
+    "test:sushaanth": "jest ./src/sushaanth.test.js",
+    "test:atikram": "jest ./src/atikram.test.js",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -21,9 +23,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.0",
+    "jest": "^29.5.0",
     "prettier": "^2.8.7"
-  },
-  "dependencies": {
-    "jest": "^29.5.0"
   }
 }
