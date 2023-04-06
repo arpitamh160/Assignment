@@ -26,4 +26,63 @@ function padZerosBeforeNumber(number, numOfDigits) {
   return number.toString().padStart(numOfDigits, "0");
 }
 
-module.exports = { padZerosBeforeNumber };
+/**
+ * 9. Write a function called addArrays, that will generate a result array where it contains the some of corresponding numbers
+ * in the source arrays.
+ */
+
+/**
+ * A function that adds two numeric Arrays.
+ * @param {Array} a - The first Array to add.
+ * @param {Array} b - The second Array to add.
+ * @returns {Array} The sum of a and b.
+ */
+function addArrays(a, b) {
+  if (!Array.isArray(a) && !Array.isArray(b)) {
+    return `${a} is not an Array \n${b} is not an Array`;
+  }
+  if (!Array.isArray(a)) {
+    return `${a} is not an Array`;
+  }
+  if (!Array.isArray(b)) {
+    return `${b} is not an Array`;
+  }
+
+  let aTypeChecker = "";
+  for (let i = 0; i < a.length; i++) {
+    if (typeof a[i] !== "number") {
+      aTypeChecker += `${a[i]} in [${a}] at index ${i} is not a number \n`;
+    }
+  }
+
+  let bTypeChecker = "";
+  for (let j = 0; j < b.length; j++) {
+    if (typeof b[j] !== "number") {
+      bTypeChecker += `${b[j]} in [${b}] at index ${j} is not a number \n`;
+    }
+  }
+
+  if (aTypeChecker !== "" && bTypeChecker !== "") {
+    return aTypeChecker + bTypeChecker.replace(/\n$/, "");
+  }
+  if (aTypeChecker !== "") {
+    return aTypeChecker.replace(/\n$/, "");
+  }
+  if (bTypeChecker !== "") {
+    return bTypeChecker.replace(/\n$/, "");
+  }
+
+  const result = [];
+  const minimumLength = a.length > b.length ? b.length : a.length;
+  const maximumArray = a.length < b.length ? b : a;
+  let k = 0;
+  for (; k < minimumLength; k++) {
+    result.push(a[k] + b[k]);
+  }
+  for (; k < maximumArray.length; k++) {
+    result.push(maximumArray[k]);
+  }
+  return result;
+}
+
+module.exports = { padZerosBeforeNumber, addArrays };
